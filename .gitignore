@@ -1,0 +1,3 @@
+puppet/modules
+puppet/.tmp
+*.lock
