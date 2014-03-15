@@ -1,3 +1,4 @@
 forge "http://forge.puppetlabs.com"
 
 mod "garethr/docker"
+mod "puppetlabs/apt"

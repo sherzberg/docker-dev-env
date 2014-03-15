@@ -1,5 +1,11 @@
 include docker
 
+apt::ppa { 'ppa:fkrull/deadsnakes': }
+->
+package {'pythons':
+  name => ['python3.4-dev', 'pypy-dev']
+}
+
 package {'base-deps':
   name   => ['python-dev', 'python-pip', 'vim-nox', 'git', 'mercurial', 'tmux'],
   ensure => present,
