@@ -15,6 +15,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 8080, host: 8080
   config.vm.network :forwarded_port, guest: 8888, host: 8888
 
+  # RabbitMQ
+  config.vm.network :forwarded_port, guest: 5672, host: 5672
+  config.vm.network :forwarded_port, guest: 15672, host: 15672
+
   config.vm.network :forwarded_port, guest: 5432, host: 5432
   config.vm.network :forwarded_port, guest: 3306, host: 3306
   config.vm.network :forwarded_port, guest: 5555, host: 5555
