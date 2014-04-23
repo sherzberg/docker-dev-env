@@ -27,6 +27,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "4096"]
   end
 
+  config.vm.provision "shell", inline: "sudo locale-gen en_US.UTF-8"
+  config.vm.provision "shell", inline: "sudo dpkg-reconfigure locales"
   config.vm.provision "shell", inline: "sudo apt-get update"
 
   config.librarian_puppet.puppetfile_dir = "puppet"
