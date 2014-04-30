@@ -21,6 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network :forwarded_port, guest: 5432, host: 5432
   config.vm.network :forwarded_port, guest: 3306, host: 3306
+  config.vm.network :forwarded_port, guest: 3307, host: 3307
   config.vm.network :forwarded_port, guest: 5555, host: 5555
 
   config.vm.provider :virtualbox do |vb|
