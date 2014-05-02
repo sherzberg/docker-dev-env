@@ -7,7 +7,7 @@ package {'pythons':
 }
 
 package {'base-deps':
-  name   => ['python-dev', 'python-pip', 'vim-nox', 'git', 'mercurial', 'tmux'],
+  name   => ['cgroup-lite', 'python-dev', 'python-pip', 'vim-nox', 'git', 'mercurial', 'tmux'],
   ensure => present,
 }
 
