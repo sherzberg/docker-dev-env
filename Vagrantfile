@@ -19,10 +19,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 5672, host: 5672
   config.vm.network :forwarded_port, guest: 15672, host: 15672
 
+  # Logstash
+  config.vm.network :forwarded_port, guest: 9200, host: 9200
+  config.vm.network :forwarded_port, guest: 9300, host: 9300
+  config.vm.network :forwarded_port, guest: 9292, host: 9292
+
   config.vm.network :forwarded_port, guest: 5432, host: 5432
   config.vm.network :forwarded_port, guest: 3306, host: 3306
   config.vm.network :forwarded_port, guest: 3307, host: 3307
   config.vm.network :forwarded_port, guest: 5555, host: 5555
+
+  config.vm.network :forwarded_port, guest: 12201, host: 12201
+  config.vm.network :forwarded_port, guest: 12900, host: 12900
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "4096"]
