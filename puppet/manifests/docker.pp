@@ -1,13 +1,20 @@
-include docker
+
+class { 'docker':
+  tcp_bind    => 'tcp://127.0.0.1:4243',
+  socket_bind => 'unix:///var/run/docker.sock',
+}
 
 apt::ppa { 'ppa:fkrull/deadsnakes': }
 ->
-package {'pythons':
-  name => ['python3.4-dev', 'pypy-dev']
+package {'python3.4-dev':
+  ensure => present,
+}
+->
+package {'pypy-dev':
+  ensure => present,
 }
 
-package {'base-deps':
-  name   => ['cgroup-lite', 'python-dev', 'python-pip', 'vim-nox', 'git', 'mercurial', 'tmux'],
+package {['python-dev', 'python-pip', 'vim-nox', 'git', 'mercurial', 'tmux']:
   ensure => present,
 }
 
@@ -19,11 +26,10 @@ user {'sherzberg':
 package {'pip':
   ensure   => latest,
   provider => 'pip',
-  require  => Package['base-deps'],
+  require  => Package['python-pip'],
 }
 
-package {'python-deps':
-  name    => ['pss', 'fig', 'wheel', 'virtualenv', 'virtualenvwrapper', 'bpython', 'ipython', 'autoenv'],
+package {['pss', 'fig', 'wheel', 'virtualenv', 'virtualenvwrapper', 'bpython', 'ipython', 'autoenv']:
   provider => 'pip',
   require => Package['pip'],
 }
